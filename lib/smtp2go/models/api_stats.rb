@@ -1,7 +1,4 @@
-require_relative '../modules/helpers.rb'
-require_relative '../modules/api_smtp2go'
-
-class APIStats
+class APIStats < APIMain
   include APISmtp2go
   include Helpers
 
