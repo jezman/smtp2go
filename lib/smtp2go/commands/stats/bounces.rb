@@ -11,8 +11,8 @@ module Smtp2go
         end
 
         def execute(input: $stdin, output: $stdout)
-          # Command logic goes here ...
-          output.puts "OK"
+          stats = APIStats.new
+          report(stats.bounces)
         end
       end
     end

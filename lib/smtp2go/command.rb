@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
+require_relative 'models/api_stats'
+require_relative 'modules/reports.rb'
 require 'forwardable'
 
 module Smtp2go
   class Command
     extend Forwardable
+    include Reports
 
     def_delegators :command, :run
 
