@@ -17,5 +17,8 @@ module Smtp2go
       puts "v#{Smtp2go::VERSION}"
     end
     map %w(--version -v) => :version
+
+    require_relative 'commands/stats'
+    register Smtp2go::Commands::Stats, 'stats', 'stats [SUBCOMMAND]', 'Retrieve different statistical reports for your account'
   end
 end
