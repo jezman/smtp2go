@@ -12,8 +12,7 @@ module Smtp2go
 
         def execute(input: $stdin, output: $stdout)
           stats = APIStats.new
-          # TODO: modify report
-          report(stats.history)
+          history_report(stats.history)
         end
       end
     end
