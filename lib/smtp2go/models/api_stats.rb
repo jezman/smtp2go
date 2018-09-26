@@ -5,6 +5,8 @@ class APIStats
   include APISmtp2go
   include Helpers
 
+  attr_reader :response
+
   def bounces
     data(URLS_STATS[:bounces])
   end
@@ -32,7 +34,7 @@ class APIStats
   private
 
   def data(url)
-    body = response_body(url)
-    parse_json(body)
+    @response = send_request(url)
+    parse_json(@response.body)
   end
 end
