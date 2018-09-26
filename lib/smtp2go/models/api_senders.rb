@@ -1,6 +1,6 @@
 class APISenders < APIMain
-  def add
-    data(URLS_SENDERS[:add])
+  def add(email)
+    data(URLS_SENDERS[:add], email)
   end
 
   def remove

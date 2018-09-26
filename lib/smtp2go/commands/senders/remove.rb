@@ -11,6 +11,12 @@ module Smtp2go
         end
 
         def execute(input: $stdin, output: $stdout)
+          sender = APISenders.new
+          sender.email_valid?(@email)
+          @options[:email] = @email
+          report(sender.remove(@options))
+        rescue => e
+          puts e.message
           # Command logic goes here ...
           output.puts "OK"
         end

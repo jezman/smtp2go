@@ -3,15 +3,23 @@ require 'net/http'
 require 'json'
 
 module Helpers
-  def send_request(path)
+  def email_valid?(email)
+    raise 'invalid email' if email !~ URI::MailTo::EMAIL_REGEXP
+  end
+
+  private
+
+  def send_request(path, options = {})
     url = URI.parse(path)
     http = Net::HTTP.new(url.host, url.port)
 
     http.use_ssl = true if url.scheme == 'https'
 
-    headers = { 'Content-Type' => 'application/json' }
+    options['api_key'] = ENV['SMTP2GO_API_KEY']
+    headers = {'Content-Type' => 'application/json'}
     request = Net::HTTP::Post.new(url.request_uri, headers)
-    request.body = { 'api_key' => ENV['SMTP2GO_API_KEY'] }.to_json
+
+    request.body = options.to_json
 
     http.request(request)
   end

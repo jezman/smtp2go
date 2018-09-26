@@ -10,8 +10,8 @@ class APIMain
 
   protected
 
-  def data(url)
-    @response = send_request(url)
+  def data(url, options = {})
+    @response = send_request(url, options)
     parse_json(@response.body)
   end
 end

@@ -11,12 +11,12 @@ module Smtp2go
       desc 'add', 'Add one or more allowed senders to your account'
       method_option :help, aliases: '-h', type: :boolean,
                            desc: 'Display usage information'
-      def add(*)
+      def add(email)
         if options[:help]
           invoke :help, ['add']
         else
           require_relative 'senders/add'
-          Smtp2go::Commands::Senders::Add.new(options).execute
+          Smtp2go::Commands::Senders::Add.new(email, options).execute
         end
       end
 

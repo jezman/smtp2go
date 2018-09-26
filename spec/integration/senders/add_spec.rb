@@ -3,7 +3,7 @@ RSpec.describe "`smtp2go senders add` command", type: :cli do
     output = `smtp2go senders help add`
     expected_output = <<-OUT
 Usage:
-  smtp2go add
+  smtp2go add EMAIL
 
 Options:
   -h, [--help], [--no-help]  # Display usage information
