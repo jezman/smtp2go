@@ -18,6 +18,9 @@ module Smtp2go
     end
     map %w(--version -v) => :version
 
+    require_relative 'commands/senders'
+    register Smtp2go::Commands::Senders, 'senders', 'senders [SUBCOMMAND]', 'Senders management'
+
     require_relative 'commands/stats'
     register Smtp2go::Commands::Stats, 'stats', 'stats [SUBCOMMAND]', 'Retrieve different statistical reports for your account'
   end

@@ -1,9 +1,4 @@
 class APIStats < APIMain
-  include APISmtp2go
-  include Helpers
-
-  attr_reader :response
-
   def bounces
     data(URLS_STATS[:bounces])
   end
@@ -26,12 +21,5 @@ class APIStats < APIMain
 
   def unsubscribe
     data(URLS_STATS[:unsubs])
-  end
-
-  private
-
-  def data(url)
-    @response = send_request(url)
-    parse_json(@response.body)
   end
 end

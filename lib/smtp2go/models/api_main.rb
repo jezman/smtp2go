@@ -1,9 +1,10 @@
 require_relative '../modules/helpers.rb'
-require_relative '../modules/api_smtp2go'
+require_relative '../modules/urls.rb'
+
 
 class APIMain
-  include APISmtp2go
   include Helpers
+  include Urls
 
   attr_reader :response
 
