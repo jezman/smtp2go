@@ -10,7 +10,7 @@ module Smtp2go
           @options = options
         end
 
-        def execute(input: $stdin, output: $stdout)
+        def execute
           stats = APIStats.new
           report(stats.bounces)
         end
